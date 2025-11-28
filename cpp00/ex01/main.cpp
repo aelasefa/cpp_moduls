@@ -1,25 +1,18 @@
 #include "phonebook.hpp"
 
 int main() {
-    PhoneBook pb;
+    Phonebook phonebook;
     std::string cmd;
 
     while (true) {
         std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-        if (!std::getline(std::cin, cmd)) {
-            std::cout << "No input. Exiting.\n";
+        std::getline(std::cin, cmd);
+
+        if (cmd == "ADD")
+            phonebook.addContact();
+        else if (cmd == "SEARCH")
+            phonebook.searchContact();
+        else if (cmd == "EXIT")
             break;
-        }
-        if (cmd == "ADD") {
-            pb.addContact();
-        } else if (cmd == "SEARCH") {
-            pb.search();
-        } else if (cmd == "EXIT") {
-            std::cout << "Goodbye :)\n";
-            break;
-        } else {
-            std::cout << "Unknown command. Try again.\n";
-        }
     }
-    return (0);
 }
