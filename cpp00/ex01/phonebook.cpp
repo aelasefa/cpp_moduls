@@ -28,53 +28,105 @@ bool isValidPhoneNumber(const std::string &phone) {
     size_t start = 0;
 
     if (phone[0] == '+')
-            start++;
-    for (size_t i = start; i < phone.length(); i++) {
-        if (!isdigit(phone[i]))
-            return (false);
+        start++;
+    size_t digitsCount = phone.length() - start;
+
+    if (digitsCount < 8) {
+        std::cout << "Phone number is too short. Minimum 8 digits required.\n";
+        return false;
     }
-    return (true);
+    if (digitsCount > 15) {
+        std::cout << "Phone number is too long. Maximum 15 digits allowed.\n";
+        return false;
+    }
+
+    for (size_t i = start; i < phone.length(); i++) {
+        if (!isdigit(phone[i])) {
+            std::cout << "Phone number must contain digits only (except optional leading '+').\n";
+            return false;
+        }
+    }
+
+    return true;
 }
 
 void Phonebook::addContact() {
     Contact c;
     std::string input;
 
-    std::cout << "First name: ";
-    std::getline(std::cin, input);
+    // ---------- FIRST NAME ----------
+    while (true) {
+        if (!getField("First name: ", input))
+            return;
+        if (input.find_first_not_of(" \t") == std::string::npos) {
+            std::cout << "First name cannot contain only spaces or tabs.\n";
+            continue;
+        }
+        break;
+    }
     c.setFirstName(input);
 
-    std::cout << "Last name: ";
-    std::getline(std::cin, input);
+    // ---------- LAST NAME ----------
+    while (true) {
+        if (!getField("Last name: ", input))
+            return;
+        if (input.find_first_not_of(" \t") == std::string::npos) {
+            std::cout << "Last name cannot contain only spaces or tabs.\n";
+            continue;
+        }
+        break;
+    }
     c.setLastName(input);
 
-    std::cout << "Nickname: ";
-    std::getline(std::cin, input);
+    // ---------- NICKNAME ----------
+    while (true) {
+        if (!getField("Nickname: ", input))
+            return;
+        if (input.find_first_not_of(" \t") == std::string::npos) {
+            std::cout << "Nickname cannot contain only spaces or tabs.\n";
+            continue;
+        }
+        break;
+    }
     c.setNickName(input);
 
-    std::cout << "Phone number: ";
-    std::getline(std::cin, input);
+    // ---------- PHONE NUMBER ----------
+    while (true) {
+        if (!getField("Phone number: ", input))
+            return;
+
+        if (!isValidPhoneNumber(input))
+            std::cout << "Invalid phone number! Use digits or + at start.\n";
+        else
+            break;
+    }
     c.setPhoneNumber(input);
 
-    std::cout << "Darkest secret: ";
-    std::getline(std::cin, input);
+    // ---------- DARKEST SECRET ----------
+    while (true) {
+        if (!getField("Darkest secret: ", input))
+            return;
+        if (input.find_first_not_of(" \t") == std::string::npos) {
+            std::cout << "Darkest secret cannot contain only spaces or tabs.\n";
+            continue;
+        }
+        break;
+    }
     c.setDarkestSecret(input);
 
+    // ---------- SAVE CONTACT ----------
 	int index;
 
-	if (contact_count < 8)
+	if (contact_count < 8) {
 		index = contact_count;
-	else
+		contact_count++;
+	}
+	else {
 		index = contact_index;
-
-    contacts[index] = c;
-
-    if (contact_count < 8)
-        contact_count++;
-    else
-        contact_index = (contact_index + 1) % 8;
-
-    std::cout << "Contact added!" << std::endl;
+		contact_index = (contact_index + 1) % 8;
+	}
+	contacts[index] = c;
+	std::cout << "Contact added!" << std::endl;
 }
 
 void Phonebook::searchContact() const {
