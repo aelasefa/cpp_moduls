@@ -7,5 +7,5 @@ void Zombie::announce()
 
 Zombie::~Zombie()
 {
-		std::cout << this->name <<"   dead" << std::endl;
+    std::cout << this->name << " has been destroyed." << std::endl;
 }
