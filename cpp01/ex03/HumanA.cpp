@@ -7,7 +7,7 @@ HumanA::HumanA(const std::string &va, Weapon &wa):wp(wa)
 
 void HumanA::attack() const
 {
-	std::cout << name << "attacks with their" << wp.getType() << std::endl;
+	std::cout << name << " attacks with their " << wp.getType() << std::endl;
 }
 
 HumanA::~HumanA()
