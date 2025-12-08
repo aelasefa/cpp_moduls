@@ -2,7 +2,7 @@
 #define ZOMBIE_HPP
 
 #include <iostream>
-
+#include <cstdlib>
 class Zombie {
 private:
 	std::string name;	

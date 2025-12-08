@@ -1,8 +1,7 @@
 NAME = replace
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
-
-SRC = main.cpp  #ft_replace.cpp
+CXXFLAGS = -Wall -Wextra -Werror 
+SRC = main.cpp 
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
