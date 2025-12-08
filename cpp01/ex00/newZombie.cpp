@@ -2,11 +2,11 @@
 
 Zombie* newZombie( std::string name )
 {
-	Zombie *Zombie_ =  new Zombie(name);
-	if (!Zombie_)
+	Zombie *Zombie_heap =  new Zombie(name);
+	if (!Zombie_heap)
 	{
 		std::cout << "Memory allocation failed" << std::endl;
 		exit(1);
 	}
-	return Zombie_;
+	return Zombie_heap;
 }
