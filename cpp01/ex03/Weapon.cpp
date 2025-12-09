@@ -14,6 +14,10 @@ const std::string& Weapon::getType()const
 {
 	return type;
 }
+Weapon::~Weapon()
+{
+    std::cout << "Weapon destroyed" << std::endl;
+}
 
 void Weapon::setType(std::string value)
 {

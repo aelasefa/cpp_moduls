@@ -61,4 +61,3 @@ int main(int ac, char **av)
     outfile << result;
     outfile.close();
 }
-

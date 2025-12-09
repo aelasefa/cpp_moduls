@@ -9,3 +9,8 @@ void HumanA::attack() const
 {
 	std::cout << name << " attacks with their " << wp.getType() << std::endl;
 }
+
+HumanA::~HumanA()
+{
+	    std::cout << "HumanA destroyed" << std::endl;
+}

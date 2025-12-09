@@ -6,6 +6,10 @@ HumanB::HumanB(std::string value)
 	weapon = NULL;
 }
 
+HumanB::~HumanB()
+{
+	    std::cout << "HumanB destroyed" << std::endl;
+}
 
 void HumanB::attack()
 {
