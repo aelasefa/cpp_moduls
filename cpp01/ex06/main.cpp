@@ -5,7 +5,7 @@ int main(int ac, char **av)
 	Harl harl;
 	if (ac != 2)
 	{
-		std::cout << "Usage: ./harlFilter <level>" << std::endl;
+		std::cout << "HARL LOVES HIS PROGRAM TO BE USED LIKE :\n./harlFilter <level>" << std::endl;
         return 1;
 	}
 	std::string level = av[1];
