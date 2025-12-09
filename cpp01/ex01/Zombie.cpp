@@ -4,7 +4,7 @@ Zombie::Zombie(){};
 
 void Zombie::announce()const
 {
-	std::cout << "BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->name << " BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 Zombie::~Zombie()
