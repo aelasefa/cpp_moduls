@@ -2,7 +2,6 @@
 #define FIXED_HPP
 
 #include <iostream>
-#include <algorithm>
 class Fixed {
 private:
 	int Integer;
