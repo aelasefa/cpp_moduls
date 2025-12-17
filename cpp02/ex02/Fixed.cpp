@@ -118,7 +118,7 @@ Fixed Fixed::operator/(const Fixed &other) const
 
 Fixed &Fixed::operator++()
 {
-    RawValue++;
+    ++RawValue;
     return *this;
 }
 
@@ -131,7 +131,7 @@ Fixed Fixed::operator++(int)
 
 Fixed &Fixed::operator--()
 {
-    RawValue--;
+    --RawValue;
     return *this;
 }
 

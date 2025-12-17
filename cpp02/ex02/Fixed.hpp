@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <cmath>
-#define DEBUG_MESSAGES 1 
+#define DEBUG_MESSAGES 0
 class Fixed {
 private:
     int                 RawValue;
