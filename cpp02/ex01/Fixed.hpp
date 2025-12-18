@@ -11,8 +11,8 @@ private:
 
 public:
     Fixed();
-    Fixed(int Number);
-    Fixed(float FloatingPointNumber);
+    Fixed(const int Number);
+    Fixed(const float FloatingPointNumber);
     Fixed(const Fixed& obj);
     Fixed &operator=(const Fixed& obj);
 
