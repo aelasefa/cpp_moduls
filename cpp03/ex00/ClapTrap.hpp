@@ -2,7 +2,7 @@
 #define CLAPTRAP_HPP
 
 #include <string>
-#define DEBUG_MESSAGES 1
+#define DEBUG_MESSAGES 0
 
 class ClapTrap {
 private:
@@ -20,5 +20,15 @@ public:
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
+
+	int getHitPoints() const;
+	int	getenergyPoint() const;
+	int getAttackDamage() const;
+
+	void setAttackDamage(int amount);
+	void setHitPoints(int amount);
+	void setEnergyPoint(int amount);
+
+
 };
 #endif

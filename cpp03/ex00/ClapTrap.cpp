@@ -34,8 +34,74 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &obj)
 	}
 	return *this;
 }
+
 ClapTrap::~ClapTrap()
 {
 	if (DEBUG_MESSAGES)
 		std::cout << "Destructor called" << std::endl;
+}
+
+int ClapTrap::getHitPoints() const
+{
+    return _hitPoints;
+}
+
+int ClapTrap::getAttackDamage() const
+{
+    return _attackDamage;
+}
+
+int	ClapTrap::getenergyPoint() const
+{
+	return _energyPoint;
+}
+
+void ClapTrap::setAttackDamage(int amount)
+{
+    _attackDamage = amount;
+}
+
+void ClapTrap::setHitPoints(int amount)
+{
+    _hitPoints = amount;
+}
+
+void ClapTrap::setEnergyPoint(int amount)
+{
+    _energyPoint = amount;
+}
+
+void ClapTrap::attack(const std::string &target)
+{
+	if (_hitPoints <= 0 || _energyPoint <= 0)
+	{
+		std::cout << "ClapTrap " << _name << " cannot attack" << std::endl;
+		return;
+	}
+	_energyPoint--;
+	std::cout << "ClapTrap " << _name << " attacks " << target
+		<< ", causing " << _attackDamage << " points of damage!"
+		<< std::endl;
+}
+
+void ClapTrap::takeDamage(unsigned int amount)
+{
+	_hitPoints -= amount;
+	if (_hitPoints < 0)
+		_hitPoints = 0;
+	std::cout << "ClapTrap " << _name << " takes "
+		<< amount << " points of damage!" << std::endl;
+}
+
+void ClapTrap::beRepaired(unsigned int amount)
+{
+	if (_hitPoints <= 0 || _energyPoint <= 0)
+	{
+		std::cout << "ClapTrap " << _name << " cannot be repaired" << std::endl;
+		return;
+	}
+	_energyPoint--;
+	_hitPoints += amount;
+	std::cout << "ClapTrap " << _name << " is repaired for "
+		<< amount << " hit points!" << std::endl;
 }
