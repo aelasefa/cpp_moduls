@@ -1,20 +1,31 @@
 #include "ClapTrap.hpp" 
 #include <iostream>
 
-ClapTrap::ClapTrap():_name("Ayman"),_hitPoints(10),_energyPoint(10),_attackDamage(0)
-{}
+ClapTrap::ClapTrap()
+	: _name("Ayman"), _hitPoints(10), _energyPoint(10), _attackDamage(0)
+{
+	if (DEBUG_MESSAGES)
+		std::cout << "ClapTrap: Default constructor called for " << _name << std::endl;
+}
 
-ClapTrap::ClapTrap(const std::string &name):
-	_name(name),_hitPoints(10),_energyPoint(10),_attackDamage(0)
+ClapTrap::ClapTrap(const std::string &name)
+	: _name(name), _hitPoints(10), _energyPoint(10), _attackDamage(0)
+{
+	if (DEBUG_MESSAGES)
+		std::cout << "ClapTrap: Parameterized constructor called for " << _name << std::endl;
+}
 
-{}
 ClapTrap::ClapTrap(const ClapTrap &other)
 {
+	if (DEBUG_MESSAGES)
+		std::cout << "ClapTrap: Copy constructor called for " << other._name << std::endl;
 	*this = other;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &obj)
 {
+	if (DEBUG_MESSAGES)
+		std::cout << "ClapTrap: Copy assignment operator called for " << obj._name << std::endl;
 	if (this != &obj)
 	{
 		_name = obj._name;
@@ -26,7 +37,10 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &obj)
 }
 
 ClapTrap::~ClapTrap()
-{}
+{
+	if (DEBUG_MESSAGES)
+		std::cout << "ClapTrap: Destructor called for " << _name << std::endl;
+}
 
 int ClapTrap::getHitPoints() const
 {
@@ -110,4 +124,3 @@ void ClapTrap::beRepaired(unsigned int amount)
 	std::cout << "ClapTrap " << _name << " is repaired for "
 		<< amount << " hit points! Current HP: " << _hitPoints << std::endl;
 }
-
