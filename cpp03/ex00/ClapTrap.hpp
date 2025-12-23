@@ -2,7 +2,7 @@
 #define CLAPTRAP_HPP
 
 #include <string>
-#define DEBUG_MESSAGES 0
+#define DEBUG_MESSAGES 1
 
 class ClapTrap {
 private:
