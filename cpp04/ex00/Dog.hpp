@@ -4,14 +4,12 @@
 #include "Animal.hpp"
 
 class Dog: public Animal {
-private:
-	std::string type;
 public:
 	Dog();
-	~Dog();
-	void makeSound() override
-	{
-		std::cout << " meows" << std::endl;
-	}
+	Dog(const Dog &other);
+    Dog &operator=(const Dog &other);
+	virtual ~Dog();
+	void makeSound() const;
 };
 #endif
+
