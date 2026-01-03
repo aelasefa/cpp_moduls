@@ -37,14 +37,17 @@ const std::string &Form::getName() const
 {
 	return this->name;
 }
+
 bool Form::getIsSigned() const
 {
 	return this->isSigned;
 }
+
 int Form::getGradeToSign() const
 {
 	return this->gradeToSign;
 }
+
 int Form::getGradeToExecute() const
 {
 	return  this->gradeToExecute;
