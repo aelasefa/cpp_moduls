@@ -1,47 +1,69 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
 int main()
 {
-    std::cout << "\n--- 1. Try to execute unsigned form ---\n";
-    try
+    std::cout << "\n===== TEST 1: Sign + Execute Successfully =====\n";
     {
-        Bureaucrat low("LowGuy", 5);
-        PresidentialPardonForm form("Arthur Dent");
+        Bureaucrat boss("Boss", 1);
 
-        low.executeForm(form);
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Exception: " << e.what() << std::endl;
-    }
+        ShrubberyCreationForm tree("garden");
+        RobotomyRequestForm robo("Bender");
+        PresidentialPardonForm pardon("Arthur");
 
-    std::cout << "\n--- 2. Try to sign but grade too low ---\n";
-    try
-    {
-        Bureaucrat bob("Bob", 50);
-        PresidentialPardonForm form("Ford Prefect");
+        boss.signForm(tree);
+        boss.executeForm(tree);
 
-        bob.signForm(form);
-    }
-    catch (std::exception &e)
-    {
-        std::cout << "Exception: " << e.what() << std::endl;
+        boss.signForm(robo);
+        boss.executeForm(robo);
+
+        boss.signForm(pardon);
+        boss.executeForm(pardon);
     }
 
-    std::cout << "\n--- 3. Correct signing + execution ---\n";
-    try
+    std::cout << "\n===== TEST 2: Execute without signing =====\n";
     {
-        Bureaucrat president("President", 1);
-        PresidentialPardonForm form("Trillian");
+        Bureaucrat worker("Worker", 1);
+        ShrubberyCreationForm tree("yard");
 
-        president.signForm(form);
-        president.executeForm(form);
+        worker.executeForm(tree);
     }
-    catch (std::exception &e)
+
+    std::cout << "\n===== TEST 3: Grade too low to sign =====\n";
     {
-        std::cout << "Exception: " << e.what() << std::endl;
+        Bureaucrat newbie("Newbie", 150);
+        PresidentialPardonForm pardon("Ford");
+
+        newbie.signForm(pardon);
+    }
+
+    std::cout << "\n===== TEST 4: Grade too low to execute =====\n";
+    {
+        Bureaucrat signer("Signer", 30);
+        Bureaucrat executor("Executor", 150);
+
+        ShrubberyCreationForm tree("home");
+
+        signer.signForm(tree);
+        executor.executeForm(tree);
+    }
+
+    std::cout << "\n===== TEST 5: Boundary Behavior =====\n";
+    {
+        try {
+            Bureaucrat tooHigh("God", 0);
+        } catch (std::exception &e) {
+            std::cout << "Creating Bureaucrat failed: " << e.what() << std::endl;
+        }
+
+        try {
+            ShrubberyCreationForm bad("target");
+        } catch (std::exception &e) {
+            std::cout << "Creating form failed: " << e.what() << std::endl;
+        }
     }
 
     return 0;
