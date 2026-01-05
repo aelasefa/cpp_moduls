@@ -9,7 +9,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
     static bool seeded = false;
     if (!seeded)
     {
-        std::srand(std::time(nullptr));
+        std::srand(std::time(NULL));
         seeded = true;
     }
 }

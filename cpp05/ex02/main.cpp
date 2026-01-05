@@ -1,33 +1,49 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
-	try
-	{
-		Bureaucrat alice("Alice", 140);
-		Bureaucrat bob("Bob", 130);       
-		ShrubberyCreationForm form("home");
+    std::cout << "\n--- 1. Try to execute unsigned form ---\n";
+    try
+    {
+        Bureaucrat low("LowGuy", 5);
+        PresidentialPardonForm form("Arthur Dent");
 
-		std::cout << alice << std::endl;
-		std::cout << bob << std::endl;
-		std::cout << form << std::endl;
+        low.executeForm(form);
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
 
-		alice.signForm(form);
-		std::cout << form << std::endl;
+    std::cout << "\n--- 2. Try to sign but grade too low ---\n";
+    try
+    {
+        Bureaucrat bob("Bob", 50);
+        PresidentialPardonForm form("Ford Prefect");
 
-		alice.executeForm(form);
+        bob.signForm(form);
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
 
-		bob.executeForm(form);
+    std::cout << "\n--- 3. Correct signing + execution ---\n";
+    try
+    {
+        Bureaucrat president("President", 1);
+        PresidentialPardonForm form("Trillian");
 
-		std::cout << "Check the file 'home_shrubbery' for ASCII trees." << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << "Exception caught in main: " << e.what() << std::endl;
-	}
+        president.signForm(form);
+        president.executeForm(form);
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
 
-	return 0;
+    return 0;
 }
 
