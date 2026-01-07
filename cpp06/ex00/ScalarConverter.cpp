@@ -147,4 +147,3 @@ void ScalarConverter::convert(const std::string &input)
         std::cout << ".0";
     std::cout << std::endl;
 }
-
