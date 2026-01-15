@@ -1,8 +1,13 @@
 #include <iostream>
 #include "MutantStack.hpp"
 
+#include <iostream>
+#include <vector>
+#include "MutantStack.hpp"
+
 int main()
 {
+    std::cout << "Testing MutantStack with default container (deque):\n";
     MutantStack<int> mstack;
 
     std::cout << "Pushing elements: 5, 17\n";
@@ -31,6 +36,22 @@ int main()
     for (MutantStack<int>::reverse_iterator rit = mstack.rbegin(); rit != mstack.rend(); ++rit)
     {
         std::cout << *rit << std::endl;
+    }
+
+    std::cout << "\nTesting MutantStack with std::vector as container:\n";
+    MutantStack<int, std::vector<int> > mstackVec;
+
+    std::cout << "Pushing elements: 10, 20, 30\n";
+    mstackVec.push(10);
+    mstackVec.push(20);
+    mstackVec.push(30);
+
+    std::cout << "Top element: " << mstackVec.top() << std::endl;
+
+    std::cout << "Iterating through MutantStack with vector:\n";
+    for (MutantStack<int, std::vector<int> >::iterator it = mstackVec.begin(); it != mstackVec.end(); ++it)
+    {
+        std::cout << *it << std::endl;
     }
 
     return 0;
