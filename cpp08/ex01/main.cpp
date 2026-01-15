@@ -1,25 +1,23 @@
 #include <iostream>
+#include <vector>
 #include "Span.hpp"
 
 int main()
 {
     try
     {
+        std::vector<int> nums = {6, 3, 17, 9, 11};
         Span sp(5);
 
-        std::cout << "Adding numbers: 6, 3, 17, 9, 11\n";
-        sp.addNumber(6);
-        sp.addNumber(3);
-        sp.addNumber(17);
-        sp.addNumber(9);
-        sp.addNumber(11);
+        std::cout << "Adding a range of numbers: 6, 3, 17, 9, 11\n";
+        sp.addNumbers(nums.begin(), nums.end());
 
         std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl;
         std::cout << "Longest Span: " << sp.longestSpan() << std::endl;
 
         std::cout << "Trying to add another number (should throw)...\n";
         sp.addNumber(42);
-	}
+    }
     catch (const std::exception &e)
     {
         std::cout << "Exception caught: " << e.what() << std::endl;
