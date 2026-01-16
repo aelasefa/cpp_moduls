@@ -1,8 +1,7 @@
-#include <iostream>
-#include <sstream>
 #include <string>
-#include <stack>
+#include <stdexcept>
 #include <cctype>
+#include "RPN.hpp"
 
 bool isNumber(const std::string& token)
 {
