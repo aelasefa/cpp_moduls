@@ -3,6 +3,9 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <map>
+#include <cstdlib>
+#include <cctype>
 
 std::string trim(const std::string& s) {
     size_t start = 0;
@@ -199,5 +202,3 @@ void processInputFile(const char* filename,
 
     file.close();
 }
-
-
