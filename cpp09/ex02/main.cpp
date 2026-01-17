@@ -1,8 +1,7 @@
 #include <iostream>
+#include "PmergeMe.hpp"
 #include <vector>
 #include <deque>
-#include <sstream>
-#include <algorithm>
 #include <cstdlib>
 #include <ctime>
 #include <iomanip> 
@@ -17,7 +16,7 @@ int main(int argc, char **argv)
 
         std::deque<int> deq(vec.begin(), vec.end());
 
-        std::cout << "Before: ";
+        std::cout << GREEN << "Before: " << RESET;
         for (size_t i = 0; i < vec.size(); i++)
         {
             std::cout << vec[i];
@@ -36,7 +35,7 @@ int main(int argc, char **argv)
         clock_t end_deq = clock();
         double time_deq = static_cast<double>(end_deq - start_deq) * 1000000 / CLOCKS_PER_SEC;
 
-        std::cout << "After: ";
+        std::cout << GREEN << "After: " << RESET;
         for (size_t i = 0; i < vec.size(); i++)
         {
             std::cout << vec[i];
@@ -47,14 +46,14 @@ int main(int argc, char **argv)
 
         std::cout << std::fixed << std::setprecision(2);
 
-        std::cout << "Time to process a range of "
+        std::cout << RED << "Time to process a range of "
                   << vec.size()
-                  << " elements with std::vector : "
+                  << " elements with std::vector : "  << RESET
                   << time_vec << " us" << std::endl;
 
-        std::cout << "Time to process a range of "
+        std::cout << RED << "Time to process a range of "
                   << deq.size()
-                  << " elements with std::deque : "
+                  << " elements with std::deque : "  << RESET
                   << time_deq << " us" << std::endl;
     }
     catch (std::exception &e)
