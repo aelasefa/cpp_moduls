@@ -1,11 +1,10 @@
-#include <iostream>
+#include <string>
+#include <stdexcept>
 #include <vector>
 #include <deque>
-#include <sstream>
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
-#include <iomanip> 
 
 
 bool comparePairs(const std::pair<int, int> &a,
@@ -142,5 +141,3 @@ void sortDeque(std::deque<int> &input)
 
     input = mainChain;
 }
-
-
